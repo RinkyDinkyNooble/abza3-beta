@@ -23,7 +23,7 @@ ItemEvents.tooltip(event => {
     event.addAdvanced("cure:vaccine", (item, advanced, text) => {
         text.clear();
         text.add(Text.gold("Zombie Infection Cure"));
-        text.add(Text.lightPurple("Permanently effects all forms of infections"));
+        text.add(Text.lightPurple("Permanently cures all forms of infection"));
         text.add(Text.darkGray("You remain immune even after death"));
     });
 

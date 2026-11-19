@@ -86,7 +86,7 @@ function getBlockState(stateInfo) {
 ServerEvents.commandRegistry(event => {
 	const { commands: Commands, arguments: Arguments } = event
 	event.register(
-		Commands.literal("spawn")
+		Commands.literal("spawn").requires(src => src.hasPermission(2))
 			.then(Commands.argument("entity", Arguments.RESOURCE_LOCATION.create(event))
 				.then(Commands.argument("nbt", Arguments.NBT_TAG.create(event))
 					.executes(ctx => {
@@ -101,7 +101,7 @@ ServerEvents.commandRegistry(event => {
 			)
 	);
 	event.register(
-		Commands.literal("placeBlockEntity").then(
+		Commands.literal("placeBlockEntity").requires(src => src.hasPermission(2)).then(
 			Commands.argument("block[state]", Arguments.BLOCK_STATE.create(event))
 				.then(Commands.argument("nbt", Arguments.NBT_TAG.create(event))
 					.executes((ctx) => {
@@ -115,7 +115,7 @@ ServerEvents.commandRegistry(event => {
 		),
 	);
 	event.register(
-		Commands.literal("placeKeypad").then(
+		Commands.literal("placeKeypad").requires(src => src.hasPermission(2)).then(
 			Commands.argument("block[state]", Arguments.BLOCK_STATE.create(event)).then(
 				Commands.argument("lootName", Arguments.STRING.create(event)).executes(function (ctx) {
 					const blockInfo = getBlockState(Arguments.BLOCK_STATE.getResult(ctx, "block[state]").getState());
@@ -129,7 +129,7 @@ ServerEvents.commandRegistry(event => {
 		)
 	);
 	event.register(
-		Commands.literal("placeKeycardReader").then(
+		Commands.literal("placeKeycardReader").requires(src => src.hasPermission(2)).then(
 			Commands.argument("block[state]", Arguments.BLOCK_STATE.create(event)).then(
 				Commands.argument("lootName", Arguments.STRING.create(event)).executes(function (ctx) {
 					const blockInfo = getBlockState(Arguments.BLOCK_STATE.getResult(ctx, "block[state]").getState());
@@ -144,7 +144,7 @@ ServerEvents.commandRegistry(event => {
 		)
 	);
 	event.register(
-		Commands.literal("spawnNPC").then(
+		Commands.literal("spawnNPC").requires(src => src.hasPermission(2)).then(
 			Commands.argument("tab", Arguments.STRING.create(event)).then(
 				Commands.argument("name", Arguments.STRING.create(event)).executes(ctx => {
 					const tab = Arguments.STRING.getResult(ctx, "tab")
@@ -158,7 +158,7 @@ ServerEvents.commandRegistry(event => {
 		)
 	)
 	event.register(
-		Commands.literal("pregen").then(
+		Commands.literal("pregen").requires(src => src.hasPermission(2)).then(
 			Commands.argument("world", Arguments.DIMENSION.create(event)).then(
 				Commands.argument("shape", Arguments.STRING.create(event)).then(
 					Commands.argument("radius", Arguments.FLOAT.create(event)).executes(ctx => {

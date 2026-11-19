@@ -269,7 +269,7 @@ const THROWABLES_LOOT_T1 = {
     "superbwarfare:claymore_mine": { counts: [1], chances: [0.15], nbts: [] },
     "superbwarfare:edd": { counts: [1], chances: [0.15], nbts: [] },
     "superbwarfare:rgo_grenade": { counts: [1], chances: [0.15], nbts: [] },
-    "superbwarfare:detontor": { counts: [1], chances: [0.05], nbts: [] },
+    "superbwarfare:detonator": { counts: [1], chances: [0.05], nbts: [] },
     "superbwarfare:c4_bomb": { counts: [1, 1], chances: [0.15, 0.15], nbts: [{ Control: true }, { Control: false }] }
 }
 

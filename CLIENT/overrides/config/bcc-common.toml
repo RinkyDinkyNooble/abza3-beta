@@ -5,7 +5,7 @@
 	#Range: > 0
 	modpackProjectID = 1354045
 	#The name of the modpack
-	modpackName = "Apocalypse Begins [Zombie Apocalypse]"
+	modpackName = "Apocalypse Begins [BETA]"
 	#The version of the modpack
 	modpackVersion = "3.0.1_P-A_10P-C"
 	#Use the metadata.json to determine the modpack version

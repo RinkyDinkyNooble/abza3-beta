@@ -190,14 +190,16 @@ const ENTITY_STATS = {
 Object.entries(ENTITY_STATS).forEach(([entityId, stats]) => {
     EntityEvents.spawned(entityId, event => {
         const entity = event.entity
+        const firstSpawn = !entity.persistentData.getBoolean("abza_stats")
         Object.entries(stats).forEach(([stat, value]) => {
             const attr = entity.getAttribute(stat)
             if (attr) {
                 attr.baseValue = value
-                if (stat === "minecraft:generic.max_health") {
+                if (stat === "minecraft:generic.max_health" && firstSpawn) {
                     entity.heal(value)
                 }
             }
         })
+        entity.persistentData.putBoolean("abza_stats", true)
     })
 })

@@ -11,7 +11,7 @@
   },
   "manifestType": "minecraftModpack",
   "manifestVersion": 1,
-  "name": "ABZA-3.0.1_P-A_10P-C",
+  "name": "Apocalypse Begins [BETA]",
   "version": "3.0.1",
   "author": "RinkyNooble",
   "overrides": "overrides",
@@ -264,7 +264,7 @@
     },
     {
       "projectID": 1600434,
-      "fileID": 8415135,
+      "fileID": 9187041,
       "required": true,
       "isLocked": true
     },
@@ -1465,6 +1465,12 @@
     {
       "projectID": 1458577,
       "fileID": 7696088,
+      "required": true,
+      "isLocked": true
+    },
+    {
+      "projectID": 1799525,
+      "fileID": 9639420,
       "required": true,
       "isLocked": true
     }
