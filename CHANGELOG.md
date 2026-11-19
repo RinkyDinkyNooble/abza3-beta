@@ -10,6 +10,7 @@
 - Added Scalpel, which replaces JEITweaker, Item Obliterator and Item Obliterator Despawn Fix.
 - Removed The Flesh That Hates, Prion Infection and Entomophobia, which 3.0.1 shipped turned off.
 - Updated Superb Warfare to 0.8.9.2 and added [SBW] Performance Fix for better FPS around mob crowds.
+- Removed No Chat Reports, which is no longer on CurseForge.
 - Added the ABZA Shader pack. No shader is on by default, and BSL's custom settings are gone.
 - The title and loading screens show "Version 3.0.2" without "PRE-ALPHA | 10% Complete".
 - Turned off the Distant Horizons memory warnings and the Oculus update message.
@@ -28,6 +29,7 @@
 - Added Scalpel, which replaces JEITweaker, Item Obliterator and Item Obliterator Despawn Fix.
 - Removed The Flesh That Hates, Prion Infection and Entomophobia.
 - Updated Superb Warfare to 0.8.9.2 and added [SBW] Performance Fix.
+- Removed No Chat Reports, which is no longer on CurseForge.
 - The server list shows the pack name and version, with a new server icon.
 - Pinned the server starter jar to 0.1.35.
 - Removed leftover disabled mods and files.
