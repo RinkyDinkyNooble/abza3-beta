@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "cure:vaccine",
+        "marbledsfirstaid:curative_pills",
+        "marbledsfirstaid:panacea_pills"
+    ]
+}
