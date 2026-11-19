@@ -7,7 +7,7 @@
 	#The name of the modpack
 	modpackName = "Apocalypse Begins [BETA]"
 	#The version of the modpack
-	modpackVersion = "3.0.1_P-A_10P-C"
+	modpackVersion = "3.0.2"
 	#Use the metadata.json to determine the modpack version
 	#ONLY ENABLE THIS IF YOU KNOW WHAT YOU ARE DOING
 	useMetadata = false

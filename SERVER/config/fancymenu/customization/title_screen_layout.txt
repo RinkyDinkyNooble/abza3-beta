@@ -418,7 +418,7 @@ element {
 
 element {
   interactable = true
-  source = Version 3.0.1
+  source = Version 3.0.2
   source_mode = direct
   shadow = true
   enable_scrolling = true

@@ -3,13 +3,15 @@
 
 Changes CLIENT/manifest.json, Better Compatibility Checker (client and server must match or players
 can't join), the "Version" line on the FancyMenu title and loading screens, and the server list MOTD.
-A config that exists on both sides is changed on both. CHANGELOG.md stays manual; check_release.py
-checks everything afterwards.
+A config that exists on both sides is changed on both. Then runs icon/make_icon.py --place, which
+draws the new version into the profile image and server icon. CHANGELOG.md stays manual;
+check_release.py checks everything afterwards.
 
 Usage: python tools/set_version.py <version>
 """
 import os
 import re
+import subprocess
 import sys
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
@@ -54,6 +56,7 @@ def main():
         text = re.sub(pattern, lambda m: m.group(1) + version + m.group(3), text, flags=re.M)
         open(full, "wb").write(text.encode("utf-8"))
         print(f"{path}: {old} -> {version}")
+    subprocess.run([sys.executable, os.path.join(ROOT, "tools", "icon", "make_icon.py"), "--place"], check=True)
 
 
 if __name__ == "__main__":

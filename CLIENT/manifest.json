@@ -12,7 +12,7 @@
   "manifestType": "minecraftModpack",
   "manifestVersion": 1,
   "name": "Apocalypse Begins [BETA]",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "author": "RinkyNooble",
   "overrides": "overrides",
   "files": [
@@ -252,7 +252,7 @@
     },
     {
       "projectID": 1600434,
-      "fileID": 9187041,
+      "fileID": 8415135,
       "required": true,
       "isLocked": true
     },
@@ -1433,12 +1433,6 @@
       "isLocked": true
     },
     {
-      "projectID": 1799525,
-      "fileID": 9639420,
-      "required": true,
-      "isLocked": true
-    },
-    {
       "projectID": 1710177,
       "fileID": 9657787,
       "required": true,
@@ -1449,7 +1443,13 @@
       "fileID": 9638722,
       "required": true,
       "isLocked": true
+    },
+    {
+      "projectID": 1738158,
+      "fileID": 9639400,
+      "required": true,
+      "isLocked": true
     }
   ],
-  "image": "https://media.forgecdn.net/avatars/1555/353/639009221027536672.png"
+  "image": "profileImage/icon.webp"
 }
