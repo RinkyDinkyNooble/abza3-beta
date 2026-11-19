@@ -351,7 +351,7 @@ layout_action_executable_blocks {
 
 element {
   interactable = true
-  source = Version 3.0.1 PRE-ALPHA | 10% Complete
+  source = Version 3.0.1
   source_mode = direct
   shadow = true
   enable_scrolling = true

@@ -34,6 +34,7 @@ NativeEvents.onEvent(Java.loadClass("net.minecraftforge.event.AnvilUpdateEvent")
         var isLeftBook = leftId === "enchanted_book"
         var targetKey = isLeftBook ? "StoredEnchantments" : "Enchantments"
         var bookTag = right.getOrCreateTag()
+        var applied = false
         if (bookTag.contains("StoredEnchantments")) {
             var storedList = bookTag.getList("StoredEnchantments", 10)
             for (var i = 0; i < storedList.size(); i++) {
@@ -41,28 +42,40 @@ NativeEvents.onEvent(Java.loadClass("net.minecraftforge.event.AnvilUpdateEvent")
                 var enchId = entry.getString("id")
                 var enchLvl = entry.getShort("lvl")
                 var enchantment = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation(enchId))
-                if (enchantment) {
-                    var tag = output.getOrCreateTag()
-                    var enchList = tag.contains(targetKey) ? tag.getList(targetKey, 10) : new ListTag()
-                    var existingLevel = 0
-                    for (var j = 0; j < enchList.size(); j++) {
-                        if (enchList.getCompound(j).getString("id") === enchId) {
-                            existingLevel = enchList.getCompound(j).getShort("lvl")
-                            enchList.remove(j)
-                            break
-                        }
+                if (!enchantment) continue
+                // Only enchantments the item could get at an enchanting table or vanilla anvil
+                if (!isLeftBook && !enchantment.canEnchant(left)) continue
+                var tag = output.getOrCreateTag()
+                var enchList = tag.contains(targetKey) ? tag.getList(targetKey, 10) : new ListTag()
+                var existingIndex = -1
+                var compatible = true
+                for (var j = 0; j < enchList.size(); j++) {
+                    var otherId = enchList.getCompound(j).getString("id")
+                    if (otherId === enchId) {
+                        existingIndex = j
+                        continue
                     }
-                    var finalLevel = (existingLevel === enchLvl) ? enchLvl + 1 : Math.max(existingLevel, enchLvl)
-                    if (finalLevel > existingLevel) {
-                        finalCost += finalLevel * 10
-                    }
-                    var enchEntry = new CompoundTag()
-                    enchEntry.putString("id", enchId)
-                    enchEntry.putShort("lvl", finalLevel)
-                    enchList.add(enchEntry)
-                    tag.put(targetKey, enchList)
+                    var other = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation(otherId))
+                    if (other && !enchantment.isCompatibleWith(other)) compatible = false
                 }
+                if (!compatible) continue
+                var existingLevel = existingIndex >= 0 ? enchList.getCompound(existingIndex).getShort("lvl") : 0
+                // Two equal levels combine into the next one, up to the enchantment's maximum
+                var finalLevel = (existingLevel === enchLvl && enchLvl < enchantment.getMaxLevel()) ? enchLvl + 1 : Math.max(existingLevel, enchLvl)
+                if (finalLevel <= existingLevel) continue
+                finalCost += finalLevel * 10
+                if (existingIndex >= 0) enchList.remove(existingIndex)
+                var enchEntry = new CompoundTag()
+                enchEntry.putString("id", enchId)
+                enchEntry.putShort("lvl", finalLevel)
+                enchList.add(enchEntry)
+                tag.put(targetKey, enchList)
+                applied = true
             }
+        }
+        if (!applied) {
+            event.setCanceled(true)
+            return
         }
         if (name && name !== "") {
             output.setHoverName(Component.literal(name))

@@ -69,24 +69,7 @@
                 "value": "building_front1"
             }
         ],
-        "stairs": [
-            {
-                "factor": 1.0,
-                "value": "stairs1"
-            },
-            {
-                "factor": 1.0,
-                "value": "stairs2"
-            },
-            {
-                "factor": 1.0,
-                "value": "stairsnormal"
-            },
-            {
-                "factor": 1.0,
-                "value": "stairsbig"
-            }
-        ],
+        "stairs": [],
         "fountains": [
             {
                 "factor": 1.0,
